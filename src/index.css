@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+    font-family: "Helvetica";
+}
+
+.block {
+    background: #fff;
+    border: 1px solid #999;
+    font-size: 85px;
+    font-weight: bold;
+    line-height: 100px;
+    height: 100px;
+    width: 100px;
+    padding: 0;
+    text-align: center;
+    float: left;
+  }
+
+#board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row:after {
+    clear: both;
+    display: table;
+}
+
+.row {
+    margin: 0 auto;
+}

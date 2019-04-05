@@ -1,0 +1,38 @@
+{
+  "name": "browser-react-zoom",
+  "version": "1.0.0",
+  "description": "ZoOm Minimal Sample App Using React",
+  "main": "index.js",
+  "scripts": {
+    "deploy-production": "webpack --mode production",
+    "watch": "webpack-cli --mode development --open --watch",
+    "start": "webpack-dev-server --mode development --open --hot"
+  },
+  "keywords": [],
+  "author": "Facetec, Inc.",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint-plugin-mocha": "^5.3.0",
+    "eslint-plugin-react": "^7.12.4"
+  }
+}
