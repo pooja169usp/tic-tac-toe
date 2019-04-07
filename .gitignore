@@ -1,8 +1,8 @@
 # node dependencies
-./node_modules
+node_modules
 
 # output build files
-./build
+build
 
 # miscellaneous files
-.DS_Store
+package-lock.json
