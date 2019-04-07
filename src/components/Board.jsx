@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Block from "./Block";
 
+// This is the main component of the App. It displays the board with blocks in it that compose the game.
 export default class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isPlayerXTurn: true, // In this game the first turn will be of Player X
+      isPlayerXTurn: true, // In this game, the first turn will be of Player X
       blocks: Array(9).fill(null) // Initializing 9 elememts for 9 blocks to null
     }
   }
@@ -13,7 +14,11 @@ export default class Board extends Component {
   // Render the blocks on the board with the passed in blockId
   buildBLock(blockId) {
   return (
-    <Block turn={ this.state.blocks[blockId] } changeTurn={ () => this.changeTurn(blockId) } />
+    <div className="row">
+      <Block id={ "block" + blockId } turn={ this.state.blocks[blockId] } changeTurn={ () => this.changeTurn(blockId) } />
+      <Block id={ "block" + (blockId + 1) } turn={ this.state.blocks[blockId + 1] } changeTurn={ () => this.changeTurn(blockId + 1) } />
+      <Block id={ "block" + (blockId + 2) } turn={ this.state.blocks[blockId + 2] } changeTurn={ () => this.changeTurn(blockId + 2) } />
+    </div>
   );
   }
 
@@ -31,6 +36,8 @@ export default class Board extends Component {
         blocks: tempBlocks,
         isPlayerXTurn: !this.state.isPlayerXTurn
       });
+      // Gray the filled blocks to indicate to the user that the block has already been played and cannot be changed
+      document.getElementById( "block" + blockId) .style.backgroundColor = "lightgray";
     }
   }
 
@@ -49,6 +56,7 @@ export default class Board extends Component {
       [0, 4, 8],
       [2, 4, 6],
     ];
+    // For each winning pattern above check if each block contains the same value and return the winner
     for(let i = 0; i < winningPatterns.length; i++) {
       var pattern = winningPatterns[i];
       if(blocks[pattern[0]] && blocks[pattern[0]] === blocks[pattern[1]] && blocks[pattern[0]] === blocks[pattern[2]]) {
@@ -58,6 +66,7 @@ export default class Board extends Component {
     return this.countTheRemainingEmptyBlocks(blocks) === 1 ? "draw": false;
   }
 
+  // This method will return the number of empty blocks - We will use this to delare a draw if the winner has not been found
   countTheRemainingEmptyBlocks(blocks) {
     var counts = {};
 
@@ -68,39 +77,50 @@ export default class Board extends Component {
     return counts[null];
   }
 
+  // Once a winner is found or there is a draw, display an overlay with the winner and provide an option to restart the game
+  restartGame() {
+    this.setState({
+      isPlayerXTurn: true, // Re-initialize the state of the board, so the game will be reset
+      blocks: Array(9).fill(null) // Re-initializing 9 elememts for 9 blocks to null
+    });
+  }
+
   render() {
     var winner = this.findTheWinner(this.state.blocks);
     var gameStatus;
+    var isThereAWinner = false;
     if(winner) {
       if(winner === "draw") {
-        gameStatus = "That's a draw!"
+        gameStatus = "That's a draw!";
       }
       else {
         gameStatus = "Winner is: ";
-        gameStatus += winner == "X" ? this.props.playerX: this.props.playerO;
+        gameStatus += winner == "X" ? this.props.playerX ? this.props.playerX : "X" : this.props.playerO ? this.props.playerO : "O";
+        isThereAWinner = true;
       }
     }
     else {
-      gameStatus = this.state.isPlayerXTurn ? "Next Player: " + this.props.playerX : "Next Player: " + this.props.playerO;
+      gameStatus = "Next Player: ";
+      gameStatus += this.state.isPlayerXTurn ? this.props.playerX ? this.props.playerX : "X" : this.props.playerO ? this.props.playerO : "O";
     }
     return (
-      <div id="board">
-        <div id="gameStatus"> { gameStatus } </div>
-        <div className="row">
-          { this.buildBLock(0) }
-          { this.buildBLock(1) }
-          { this.buildBLock(2) }
-        </div>
-        <div className="row">
-          { this.buildBLock(3) }
-          { this.buildBLock(4) }
-          { this.buildBLock(5) }
-        </div>
-        <div className="row">
-          { this.buildBLock(6) }
-          { this.buildBLock(7) }
-          { this.buildBLock(8) }
-        </div>
+      <div>
+        {/** Check if the winner has been found already and display either the board or an overlay with the results and an option to restart the game **/}
+        { !winner ?
+          <div id="board">
+            <div id="gameStatus"> { gameStatus } </div>
+            { this.buildBLock(0) }
+            { this.buildBLock(3) }
+            { this.buildBLock(6) }
+          </div> : isThereAWinner ?
+          <div id="gameRestartOverlay" style={{ backgroundImage: "url('../src/celebrate.gif')" }}>
+            <div id="winnerStatus"> { gameStatus } </div>
+            <div><button id="restartButton" onClick={ this.restartGame.bind(this) } winner={ winner }>Restart Game</button></div>
+          </div> : <div id="gameRestartOverlay" style={{ backgroundImage: "url('../src/tie.gif')" }}>
+            <div id="winnerStatus"> { gameStatus } </div>
+            <div><button id="restartButton" onClick={ this.restartGame.bind(this) } winner={ winner }>Restart Game</button></div>
+          </div>
+        }
       </div>
     );
   }

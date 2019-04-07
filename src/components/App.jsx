@@ -26,11 +26,12 @@ export default class App extends Component {
   render() {
     return (
       <div className="tic-tac-toe">
+        <h3> TIC TAC TOE </h3>
         <div className="players">
-          <div>Player X: <input id="playerX" onChange={this.updatePlayer.bind(this)} type="text" value={this.state.playerX} autoComplete={"off"}/></div>
-          <div>Player O: <input id="playerO" onChange={this.updatePlayer.bind(this)} type="text" value={this.state.playerO} autoComplete={"off"}/></div>
+          <div>Player X: <input type="text" id="playerX" placeholder="Player X" onChange={this.updatePlayer.bind(this)} value={this.state.playerX} autoComplete={"off"}/></div>
+          <div>Player O: <input type="text" id="playerO" placeholder="Player O" onChange={this.updatePlayer.bind(this)} value={this.state.playerO} autoComplete={"off"}/></div>
         </div>
-        <div className="game-board">
+        <div className="app-board">
           <Board playerX={ this.state.playerX } playerO={ this.state.playerO } />
         </div>
       </div>
