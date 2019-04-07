@@ -9,6 +9,6 @@ Getting Started
 1. Download the zip file and extract it to your project location
 2. Open your terminal and navigate to the extracted folder
 3. Run the following commands to get started
-	  npm install -- This command installs the necessary dependencies for  building the app
-	  npm run watch -- This command will build the app and generate build folder with bundle.js
-	  npm start -- This command will start the app in a browser window
+	npm install -- This command installs the necessary dependencies for  building the app
+	npm run watch -- This command will build the app and generate build folder with bundle.js
+	npm start -- This command will start the app in a browser window
