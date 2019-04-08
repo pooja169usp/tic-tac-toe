@@ -83,6 +83,11 @@ export default class Board extends Component {
       isPlayerXTurn: true, // Re-initialize the state of the board, so the game will be reset
       blocks: Array(9).fill(null) // Re-initializing 9 elememts for 9 blocks to null
     });
+    var blocks = document.getElementsByClassName("block");
+    for(var i = 0; i < blocks.length; i++)
+    {
+      blocks[i].style.backgroundColor = "white";
+    }
   }
 
   render() {
@@ -108,6 +113,7 @@ export default class Board extends Component {
         {/** Check if the winner has been found already and display either the board or an overlay with the results and an option to restart the game **/}
         { !winner ?
           <div id="board">
+            <button className="refresh" onClick={ this.restartGame.bind(this) }><i className="fa fa-refresh"><span id="reset-label">Reset</span></i></button>
             <div id="gameStatus"> { gameStatus } </div>
             { this.buildBLock(0) }
             { this.buildBLock(3) }
@@ -115,10 +121,10 @@ export default class Board extends Component {
           </div> : isThereAWinner ?
           <div id="gameRestartOverlay" style={{ backgroundImage: "url('../src/celebrate.gif')" }}>
             <div id="winnerStatus"> { gameStatus } </div>
-            <div><button id="restartButton" onClick={ this.restartGame.bind(this) } winner={ winner }>Restart Game</button></div>
+            <div><button className="restartButton" onClick={ this.restartGame.bind(this) }>Restart Game</button></div>
           </div> : <div id="gameRestartOverlay" style={{ backgroundImage: "url('../src/tie.gif')" }}>
             <div id="winnerStatus"> { gameStatus } </div>
-            <div><button id="restartButton" onClick={ this.restartGame.bind(this) } winner={ winner }>Restart Game</button></div>
+            <div><button className="restartButton" onClick={ this.restartGame.bind(this) }>Restart Game</button></div>
           </div>
         }
       </div>

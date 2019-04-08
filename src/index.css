@@ -61,7 +61,7 @@ body {
     background-position: top;
 }
 
-#restartButton {
+.restartButton {
     width: 200px;
     font-size: 30px;
     cursor: pointer;
@@ -75,4 +75,24 @@ body {
 div.players div {
     margin: 5px;
     padding: 5px;
+}
+
+.refresh {
+    width: 100px;
+    cursor: pointer;
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+.refresh:hover {
+    background-color: RoyalBlue;
+}
+
+#reset-label {
+    margin: 5px;
+    font-size: 15px;
 }
