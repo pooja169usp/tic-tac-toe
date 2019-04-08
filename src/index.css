@@ -82,13 +82,13 @@ div.players div {
 }
 
 .refresh {
-    width: 100px;
+    width: 150px;
     cursor: pointer;
     background-color: DodgerBlue;
     border: none;
     color: white;
     padding: 12px 16px;
-    margin: 0 auto;
+    margin: 15px auto;
     font-size: 16px;
 }
 

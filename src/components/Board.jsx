@@ -114,11 +114,11 @@ export default class Board extends Component {
         {/** Check if the winner has been found already and display either the board or an overlay with the results and an option to restart the game **/}
         { !winner ?
           <div id="board">
-            <button className="refresh" onClick={ this.restartGame.bind(this) }><i className="fa fa-refresh"><span id="reset-label">Reset</span></i></button>
             <div id="gameStatus"> { gameStatus } </div>
             { this.buildBLock(0) }
             { this.buildBLock(3) }
             { this.buildBLock(6) }
+            <button className="refresh" onClick={ this.restartGame.bind(this) }><i className="fa fa-refresh"><span id="reset-label">Reset Board</span></i></button>
           </div> : isThereAWinner ?
           <RestartOverlay restartGame={ this.restartGame.bind(this) } gameStatus={ gameStatus } backgroundImage={ "url('../src/celebrate.gif')" } /> :
           <RestartOverlay restartGame={ this.restartGame.bind(this) } gameStatus={ gameStatus } backgroundImage={ "url('../src/tie.gif')" } />
