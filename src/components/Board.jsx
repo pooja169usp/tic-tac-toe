@@ -64,7 +64,7 @@ export default class Board extends Component {
         return blocks[pattern[0]];
       }
     }
-    return this.countTheRemainingEmptyBlocks(blocks) === 1 ? "draw": false;
+    return typeof(this.countTheRemainingEmptyBlocks(blocks)) === "undefined" ? "draw": false;
   }
 
   // This method will return the number of empty blocks - We will use this to delare a draw if the winner has not been found
