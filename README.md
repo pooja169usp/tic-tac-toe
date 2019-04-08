@@ -24,5 +24,5 @@ It is the root component that is rendered into the element id "root" in the inde
 ## Board.jsx
 This is the main component that handles all the moving parts in this app. It builds the blocks using Block component. It also handles the state of the game and checks whose turn it is. It also provides functionality for restarting the game whenever the user wishes or when there is a winner or there is a draw/tie.
 
-## Board.jsx
+## Block.jsx
 This is another component that is reused to build the Board for this app.
