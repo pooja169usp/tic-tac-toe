@@ -26,3 +26,14 @@ This is the main component that handles all the moving parts in this app. It bui
 
 ## Block.jsx
 This is another component that is reused to build the Board for this app.
+
+Future Work
+==================
+
+### Undo last move
+The users can undo their last move and save themselves from a pitfall
+### Switch users
+Users can switch from X to O and O to X with click of a button
+
+
+
