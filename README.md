@@ -27,6 +27,9 @@ This is the main component that handles all the moving parts in this app. It bui
 ## Block.jsx
 This is another component that is reused to build the Board for this app.
 
+## RestartOverlay.jsx
+This component is renders different background image based on whether there was a winner or there was a draw.
+
 Future Work
 ==================
 
