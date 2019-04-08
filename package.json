@@ -36,5 +36,9 @@
     "eslint-plugin-mocha": "^5.3.0",
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pooja169usp/tic-tac-toe.git"
   }
 }
