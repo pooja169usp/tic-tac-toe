@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Block extends Component {
-
-  render() {
-    return(
-      <button id={ this.props.id } className="block" onClick = { this.props.changeTurn }>
-        { this.props.turn }
-      </button>
-    );
-  }
+function Block(props) {
+  return(
+    <button id={ props.id } className="block" onClick = { props.changeTurn }>
+      { props.turn }
+    </button>
+  );
 }
+
+export default Block;

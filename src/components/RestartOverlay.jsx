@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class RestartOverlay extends Component {
-
-  render() {
-    return(
-      <div id="gameRestartOverlay" style={{ backgroundImage: this.props.backgroundImage }}>
-        <div id="winnerStatus"> { this.props.gameStatus } </div>
-        <div><button className="restartButton" onClick={ this.props.restartGame }>Restart Game</button></div>
-      </div>
-    );
-  }
+function RestartOverlay(props) {
+  return(
+    <div id="gameRestartOverlay" style={{ backgroundImage: props.backgroundImage }}>
+      <div id="winnerStatus"> { props.gameStatus } </div>
+      <div><button className="restartButton" onClick={ props.restartGame }>Restart Game</button></div>
+    </div>
+  );
 }
+
+export default RestartOverlay;
