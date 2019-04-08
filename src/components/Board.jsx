@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Block from "./Block";
+import RestartOverlay from "./RestartOverlay";
 
 // This is the main component of the App. It displays the board with blocks in it that compose the game.
 export default class Board extends Component {
@@ -119,13 +120,8 @@ export default class Board extends Component {
             { this.buildBLock(3) }
             { this.buildBLock(6) }
           </div> : isThereAWinner ?
-          <div id="gameRestartOverlay" style={{ backgroundImage: "url('../src/celebrate.gif')" }}>
-            <div id="winnerStatus"> { gameStatus } </div>
-            <div><button className="restartButton" onClick={ this.restartGame.bind(this) }>Restart Game</button></div>
-          </div> : <div id="gameRestartOverlay" style={{ backgroundImage: "url('../src/tie.gif')" }}>
-            <div id="winnerStatus"> { gameStatus } </div>
-            <div><button className="restartButton" onClick={ this.restartGame.bind(this) }>Restart Game</button></div>
-          </div>
+          <RestartOverlay restartGame={ this.restartGame.bind(this) } gameStatus={ gameStatus } backgroundImage={ "url('../src/celebrate.gif')" } /> :
+          <RestartOverlay restartGame={ this.restartGame.bind(this) } gameStatus={ gameStatus } backgroundImage={ "url('../src/tie.gif')" } />
         }
       </div>
     );
